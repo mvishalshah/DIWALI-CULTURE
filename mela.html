@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#160d19">
+  <meta name="description" content="Step into the Grand Diwali Mela: explore the fairground, meet its visitors and play festive games.">
+  <title>The Grand Diwali Mela | दीपोत्सव</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/mela.css">
+</head>
+<body class="mela-page">
+  <header class="site-header mela-header">
+    <a class="brand" href="index.html" aria-label="Deepawali home">
+      <span class="brand-mark">✺</span>
+      <span>दीपोत्सव <small>THE GRAND DIWALI MELA</small></span>
+    </a>
+    <a class="mela-back-link" href="index.html">← Festival home</a>
+    <div class="mela-header-actions">
+      <span class="visitor-count" id="visitorCount" aria-live="polite">Visitors are arriving</span>
+      <button class="icon-button mela-audio-toggle" id="melaAudioToggle" type="button" aria-pressed="false" aria-label="Turn festival music on">
+        <span aria-hidden="true">♫</span><span class="mela-audio-label">Sound off</span>
+      </button>
+    </div>
+  </header>
+  <main class="mela-game" id="melaGame">
+    <canvas id="melaCanvas" aria-label="Interactive Diwali fairground. Use the arrow keys or WASD to explore."></canvas>
+    <div class="mela-title-card" aria-hidden="true"><span>शुभ दीपावली</span><strong>THE GRAND MELA</strong></div>
+    <div class="game-hud">
+      <div class="hud-card mode-card">
+        <span class="hud-kicker">YOUR EVENING</span>
+        <div class="mode-switch" role="group" aria-label="Experience mode">
+          <button type="button" data-mode="explore" aria-pressed="true">Explore</button>
+          <button type="button" data-mode="watch" aria-pressed="false">Watch</button>
+          <button type="button" data-mode="photographer" aria-pressed="false">Photo</button>
+        </div>
+        <div class="visitor-note"><span class="live-dot"></span><span id="modeStatus">Move with WASD or arrow keys</span></div>
+      </div>
+      <div class="hud-card mela-progress">
+        <span class="hud-kicker">GOLDEN DIYAS</span>
+        <strong><span id="diyaCount">0</span><small> / 5</small></strong>
+        <span class="progress-track"><span id="diyaProgress"></span></span>
+      </div>
+    </div>
+    <div class="mela-toast" id="melaToast" role="status" aria-live="polite"></div>
+    <div class="nearby-card" id="nearbyCard" hidden>
+      <span class="nearby-kicker">A LITTLE CLOSER</span>
+      <strong id="nearbyTitle">A mela stall</strong>
+      <p id="nearbyDescription">Press E or tap to explore.</p>
+      <button class="button button-gold nearby-button" id="nearbyButton" type="button">Visit <span>↗</span></button>
+    </div>
+    <div class="touch-controls" aria-label="Touch movement controls">
+      <button type="button" data-direction="up" aria-label="Walk up">▲</button>
+      <div>
+        <button type="button" data-direction="left" aria-label="Walk left">◀</button>
+        <button type="button" data-direction="down" aria-label="Walk down">▼</button>
+        <button type="button" data-direction="right" aria-label="Walk right">▶</button>
+      </div>
+    </div>
+    <div class="mela-toolbar" role="toolbar" aria-label="Festival activities">
+      <button type="button" data-activity="rangoli"><span aria-hidden="true">✿</span> Rangoli</button>
+      <button type="button" data-activity="diya"><span aria-hidden="true">◒</span> Decorate a diya</button>
+      <button type="button" data-activity="wheel"><span aria-hidden="true">✧</span> Lucky wheel</button>
+      <button type="button" data-activity="ring"><span aria-hidden="true">◎</span> Ring toss</button>
+      <button type="button" id="festivalButton"><span aria-hidden="true">✦</span> Festival lights</button>
+      <button type="button" id="photoButton"><span aria-hidden="true">▣</span> Capture scene</button>
+    </div>
+    <p class="game-hint"><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> walk <span>·</span> <kbd>E</kbd> interact <span>·</span> Collect five hidden diyas</p>
+    <div class="game-modal" id="gameModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <section class="modal-panel">
+        <button class="modal-close" type="button" aria-label="Close activity" data-close-modal>×</button>
+        <div class="modal-content" id="modalContent"></div>
+      </section>
+    </div>
+    <div class="photo-flash" id="photoFlash" aria-hidden="true"></div>
+  </main>
+  <script src="js/world.js"></script>
+  <script src="js/characters.js"></script>
+  <script src="js/movement.js"></script>
+  <script src="js/activities.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/mela.js"></script>
+</body>
+</html>
